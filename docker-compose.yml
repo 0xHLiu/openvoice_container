@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  openvoice:
+    build: .
+    container_name: openvoice-container
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./inputs:/app/inputs
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    command: ["python", "api.py"]
+    restart: unless-stopped
+
+  # Alternative service for CLI usage
+  openvoice-cli:
+    build: .
+    container_name: openvoice-cli
+    volumes:
+      - ./inputs:/app/inputs
+      - ./outputs:/app/outputs
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    # This service doesn't run by default, use it for CLI commands
+    profiles:
+      - cli 

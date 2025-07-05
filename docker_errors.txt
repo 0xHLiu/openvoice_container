@@ -1,0 +1,83 @@
+281.8               ********************************************************************************
+281.8               ############################
+281.8               # Package would be ignored #
+281.8               ############################
+281.8               Python recognizes 'dtw.data' as an importable package[^1],
+281.8               but it is absent from setuptools' `packages` configuration.
+281.8       
+281.8               This leads to an ambiguous overall configuration. If you want to distribute this
+281.8               package, please make sure that 'dtw.data' is explicitly added
+281.8               to the `packages` configuration field.
+281.8       
+281.8               Alternatively, you can also rely on setuptools' discovery methods
+281.8               (for example by using `find_namespace_packages(...)`/`find_namespace:`
+281.8               instead of `find_packages(...)`/`find:`).
+281.8       
+281.8               You can read more about "package discovery" on setuptools documentation page:
+281.8       
+281.8               - https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+281.8       
+281.8               If you don't want 'dtw.data' to be distributed and are
+281.8               already explicitly excluding 'dtw.data' via
+281.8               `find_namespace_packages(...)/find_namespace` or `find_packages(...)/find`,
+281.8               you can try to use `exclude_package_data`, or `include-package-data=False` in
+281.8               combination with a more fine grained `package-data` configuration.
+281.8       
+281.8               You can read more about "package data files" on setuptools documentation page:
+281.8       
+281.8               - https://setuptools.pypa.io/en/latest/userguide/datafiles.html
+281.8       
+281.8       
+281.8               [^1]: For Python, any directory (with suitable naming) can be imported,
+281.8                     even if it does not contain any `.py` files.
+281.8                     On the other hand, currently there is no concept of package data
+281.8                     directory, all directories are treated like packages.
+281.8               ********************************************************************************
+281.8       
+281.8       !!
+281.8         check.warn(importable)
+281.8       copying dtw/_dtw_utils.c -> build/lib.linux-aarch64-cpython-39/dtw
+281.8       copying dtw/_dtw_utils.pyx -> build/lib.linux-aarch64-cpython-39/dtw
+281.8       copying dtw/dtw_core.c -> build/lib.linux-aarch64-cpython-39/dtw
+281.8       copying dtw/dtw_core.h -> build/lib.linux-aarch64-cpython-39/dtw
+281.8       creating build/lib.linux-aarch64-cpython-39/dtw/data
+281.8       copying dtw/data/README.txt -> build/lib.linux-aarch64-cpython-39/dtw/data
+281.8       copying dtw/data/aami3a.csv -> build/lib.linux-aarch64-cpython-39/dtw/data
+281.8       copying dtw/data/aami3b.csv -> build/lib.linux-aarch64-cpython-39/dtw/data
+281.8       running build_ext
+281.8       building 'dtw._dtw_utils' extension
+281.8       creating build/temp.linux-aarch64-cpython-39/dtw
+281.8       gcc -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -fPIC -Idtw -I/tmp/pip-build-env-zvwlitga/overlay/lib/python3.9/site-packages/numpy/core/include -I/usr/local/include/python3.9 -c dtw/_dtw_utils.c -o build/temp.linux-aarch64-cpython-39/dtw/_dtw_utils.o
+281.8       error: command 'gcc' failed: No such file or directory
+281.8       [end of output]
+281.8   
+281.8   note: This error originates from a subprocess, and is likely not a problem with pip.
+281.8   ERROR: Failed building wheel for dtw-python
+281.8   Building wheel for openai-whisper (pyproject.toml): started
+283.1   Building wheel for openai-whisper (pyproject.toml): finished with status 'done'
+283.2   Created wheel for openai-whisper: filename=openai_whisper-20250625-py3-none-any.whl size=803979 sha256=2d1e92f152ea02434bdc9714b1b331eea55472972713e1b940890ca2d80942da
+283.2   Stored in directory: /tmp/pip-ephem-wheel-cache-tyxm4z8_/wheels/8a/52/46/c497a169da69d4edcfe4e66e2f597ce258c334d74d371bf8c9
+283.2 Successfully built eng_to_ipa jieba langid openai-whisper
+283.2 Failed to build dtw-python
+283.2 ERROR: Could not build wheels for dtw-python, which is required to install pyproject.toml-based projects
+284.0 
+284.0 [notice] A new release of pip is available: 23.0.1 -> 25.1.1
+284.0 [notice] To update, run: pip install --upgrade pip
+------
+Dockerfile:20
+
+--------------------
+
+  18 |     
+
+  19 |     # Install Python dependencies
+
+  20 | >>> RUN pip install --no-cache-dir -r requirements.txt
+
+  21 |     
+
+  22 |     # Copy the entire project
+
+--------------------
+
+failed to solve: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1
